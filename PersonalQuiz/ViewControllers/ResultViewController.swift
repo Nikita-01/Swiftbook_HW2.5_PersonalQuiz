@@ -14,13 +14,10 @@ class ResultViewController: UIViewController {
     
     var choosenAnswers: [Answer]!
     
-    let questions = Question.getQuestions()
-    var result = AnimalType.dog
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        result = calculateResult(answers: choosenAnswers)
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        let result = calculateResult(answers: choosenAnswers)
         resultLabel.text = "\(result) - \(String(result.rawValue))"
         resultDescriptionLabel.text = result.definition
         
@@ -46,21 +43,21 @@ class ResultViewController: UIViewController {
         }
         let animalsCount = [dogCount, catCount, rabbitCount, turtleCount]
         let winAnimal = animalsCount.sorted(by: >).first
-        var animalType = AnimalType.dog
+        var result = AnimalType.dog
 
         switch winAnimal {
         case dogCount:
-            animalType = AnimalType.dog
+            result = AnimalType.dog
         case catCount:
-            animalType = AnimalType.cat
+            result = AnimalType.cat
         case rabbitCount:
-            animalType = AnimalType.rabbit
+            result = AnimalType.rabbit
         case turtleCount:
-            animalType = AnimalType.turtle
+            result = AnimalType.turtle
         default:
             break
         }
-        return animalType
+        return result
     }
     // 1. Передать сюда массив с ответами
     // 2. Определить наиболее часто встречающийся тип животного
