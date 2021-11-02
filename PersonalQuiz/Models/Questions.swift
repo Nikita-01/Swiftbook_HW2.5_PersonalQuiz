@@ -24,7 +24,7 @@ struct Answer {
     var type: AnimalType
 }
 
-enum AnimalType: Character {
+enum AnimalType: String {
     case dog = "🐶"
     case cat = "🐱"
     case rabbit = "🐰"
